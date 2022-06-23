@@ -9,10 +9,33 @@ public class ScoreManager : MonoBehaviour
     public int player2Score;
     public int player3Score;
     public int player4Score;
+    public GameObject paddle1;
+    public GameObject paddle2;
+    public GameObject paddle3;
+    public GameObject paddle4;
+    public Collider goal1;
+    public Collider goal2;
+    public Collider goal3;
+    public Collider goal4;
+    public GameObject gameOver;
 
     public int maxScore;
+    private int endCounter;
 
     public BallController ball;
+
+    public void Start()
+    {
+        endCounter = 0;
+    }
+
+    public void Update()
+    {
+        if (endCounter == 3)
+        {
+            GameOver();
+        }
+    }
 
     public void AddPlayer1Score(int increment)
     {
@@ -20,7 +43,9 @@ public class ScoreManager : MonoBehaviour
         ball.ResetBall();
         if (player1Score >= maxScore)
         {
-            GameOver();
+            paddle1.SetActive(false);
+            goal1.isTrigger = false;
+            endCounter += 1;
         }
     }
 
@@ -30,7 +55,9 @@ public class ScoreManager : MonoBehaviour
         ball.ResetBall();
         if (player2Score >= maxScore)
         {
-            GameOver();
+            paddle2.SetActive(false);
+            goal2.isTrigger = false;
+            endCounter += 1;
         }
     }
 
@@ -40,7 +67,9 @@ public class ScoreManager : MonoBehaviour
         ball.ResetBall();
         if (player3Score >= maxScore)
         {
-            GameOver();
+            paddle3.SetActive(false);
+            goal3.isTrigger = false;
+            endCounter += 1;
         }
     }
 
@@ -50,12 +79,14 @@ public class ScoreManager : MonoBehaviour
         ball.ResetBall();
         if (player4Score >= maxScore)
         {
-            GameOver();
+            paddle4.SetActive(false);
+            goal4.isTrigger = false;
+            endCounter += 1;
         }
     }
 
     public void GameOver()
     {
-        SceneManager.LoadScene("Game Over");
+        gameOver.SetActive(true);
     }
 }

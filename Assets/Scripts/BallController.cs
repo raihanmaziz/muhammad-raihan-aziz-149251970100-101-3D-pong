@@ -24,6 +24,5 @@ public class BallController : MonoBehaviour
     public void ResetBall()
     {
         transform.position = resetPosition;
-        rig.velocity = speed;
     }
 }
