@@ -14,8 +14,8 @@ public class GoalController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == ball)
-        {
+        //if (other == ball)
+        //{
             if (isPlayer1)
             {
                 manager.AddPlayer1Score(1);
@@ -32,6 +32,6 @@ public class GoalController : MonoBehaviour
             {
                 manager.AddPlayer4Score(1);
             }
-        }
+        //}
     }
 }
